@@ -8,7 +8,6 @@
 
               
         <link el="apple-touch-icon" rel="stylesheet" href="apple-touch-icon.png">
-		<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="twitter:card" content="summary">
         <meta property="fb:app_id" content="">
@@ -35,15 +34,32 @@
 
               <script src="./jquery.twentytwenty.min.js"></script>
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M882RMPT');</script>
-<!-- End Google Tag Manager -->
+<script>
+  function generateNonce() {
+    return btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(16))));
+  }
 
-              
+  const nonce = generateNonce();
+
+  // ✅ Tạo CSP meta tag sau khi trang tải
+  const meta = document.createElement("meta");
+  meta.httpEquiv = "Content-Security-Policy";
+  meta.content = `script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com https://www.google-analytics.com`;
+  document.head.appendChild(meta);
+
+  // ✅ Chèn GTM script bằng JavaScript
+  const gtmScript = document.createElement("script");
+  gtmScript.setAttribute("nonce", nonce);
+  gtmScript.innerHTML = `
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M882RMPT');
+  `;
+  document.body.appendChild(gtmScript);
+</script>
+<!-- End Google Tag Manager -->      
             </head>
         <body>
           
