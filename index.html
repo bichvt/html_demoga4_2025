@@ -5,111 +5,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:locale" content="ja_JP">
     
-    <!-- CSP Meta Tag -->
+    <!-- CSP Meta Tag - Comprehensive security configuration -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.amazonaws.com;
-        script-src 'self' 'nonce-gtm123' https://*.googletagmanager.com;
+        script-src 'self' 'nonce-gtm123' https://*.googletagmanager.com https://www.googletagmanager.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
         img-src 'self' https://*.amazonaws.com https://*.google-analytics.com https://*.googleusercontent.com https://*.googletagmanager.com https://www.googletagmanager.com data:;
         font-src 'self' data: https://fonts.gstatic.com;
-        connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
+        connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.googletagmanager.com;
     ">
 
-    <!-- GTM Script -->
+    <!-- GTM Script with error handling -->
     <script nonce="gtm123">
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'startTime':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-M882RMPT');
+        try {
+            (function(w,d,s,l,i){
+                w[l]=w[l]||[];
+                w[l].push({
+                    'startTime': new Date().getTime(),
+                    'event':'gtm.js'
+                });
+                var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),
+                    dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;
+                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                j.onerror = function(error) {
+                    console.error('GTM loading error:', error);
+                };
+                f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-M882RMPT');
+            console.log('GTM script loaded successfully');
+        } catch (error) {
+            console.error('Error initializing GTM:', error);
+        }
     </script>
 
-    <!-- Custom JavaScript Variables -->
+    <!-- Custom JavaScript Variables with comprehensive error handling -->
     <script nonce="gtm123">
-        // Timestamp variable - CSP compliant version
+        // Global error handler for custom variables
+        window.addEventListener('error', function(event) {
+            console.error('Global error:', event.message, event);
+        });
+
+        /**
+         * Generates a timestamp in yyyy-mm-dd HH:MM:SS format
+         * Alternative to eval() for timestamp creation
+         * @returns {string} Formatted timestamp
+         */
         function getFormattedTimestamp() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            
-            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+            try {
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const day = String(now.getDate()).padStart(2, '0');
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                
+                const timestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+                console.log('Timestamp generated:', timestamp);
+                return timestamp;
+            } catch (error) {
+                console.error('Error generating timestamp:', error);
+                return 'Error generating timestamp';
+            }
         }
 
-        // First level path variable - CSP compliant version
+        /**
+         * Extracts the first-level directory from URL
+         * Alternative to eval() for path extraction
+         * @returns {string} First level path or empty string
+         */
         function getFirstLevelPath() {
-            const path = window.location.pathname;
-            const segments = path.split('/').filter(segment => segment);
-            return segments[0] || '';
+            try {
+                const path = window.location.pathname;
+                const segments = path.split('/').filter(segment => segment);
+                const firstLevel = segments[0] || '';
+                console.log('First level path extracted:', firstLevel);
+                return firstLevel;
+            } catch (error) {
+                console.error('Error getting first level path:', error);
+                return '';
+            }
         }
 
-        // Store variables in window object for GTM access
-        window.customVariables = {
-            timestamp: getFormattedTimestamp(),
-            firstLevelPath: getFirstLevelPath()
-        };
+        // Initialize custom variables with error handling
+        try {
+            window.customVariables = {
+                timestamp: getFormattedTimestamp(),
+                firstLevelPath: getFirstLevelPath()
+            };
+            console.log('Custom variables initialized:', window.customVariables);
+        } catch (error) {
+            console.error('Error initializing custom variables:', error);
+            window.customVariables = {
+                timestamp: '',
+                firstLevelPath: ''
+            };
+        }
     </script>
 
-    <!-- DataLayer Initialization -->
+    <!-- DataLayer Initialization with error handling -->
     <script nonce="gtm123">
-        window.dataLayer = window.dataLayer || [];
-        dataLayer.push({
-            'customTimestamp': window.customVariables.timestamp,
-            'customFirstLevelPath': window.customVariables.firstLevelPath,
-            'pageType': 'landing_page',
-            'pageCategory': 'food',
-            'pageName': 'PFC Meat Products'
-        });
+        try {
+            window.dataLayer = window.dataLayer || [];
+            dataLayer.push({
+                'customTimestamp': window.customVariables.timestamp,
+                'customFirstLevelPath': window.customVariables.firstLevelPath,
+                'pageType': 'landing_page',
+                'pageCategory': 'food',
+                'pageName': 'PFC Meat Products'
+            });
+            console.log('DataLayer initialized successfully:', dataLayer);
+        } catch (error) {
+            console.error('Error initializing DataLayer:', error);
+        }
     </script>
 
-    <!-- CSP and eval() Verification Script -->
+    <!-- Comprehensive Verification Script -->
     <script nonce="gtm123">
-        console.log('=== CSP and eval() Verification ===');
+        console.log('=== CSP and Security Verification ===');
         
-        // Check CSP
-        const cspMeta = document.querySelector('meta[http-equiv="Content-Security-Policy"]');
-        console.log('CSP Content:', cspMeta?.content);
-        
-        // Check GTM
-        console.log('GTM domain whitelisted:', true);
-        console.log('GA domain whitelisted:', true);
-        console.log('AWS domain whitelisted:', true);
+        // Check CSP Configuration
+        try {
+            const cspMeta = document.querySelector('meta[http-equiv="Content-Security-Policy"]');
+            console.log('CSP Content:', cspMeta?.content);
+            
+            // Verify domain whitelisting
+            console.log('Domain Whitelist Verification:');
+            console.log('GTM domain whitelisted:', cspMeta?.content.includes('googletagmanager.com'));
+            console.log('GA domain whitelisted:', cspMeta?.content.includes('google-analytics.com'));
+            console.log('AWS domain whitelisted:', cspMeta?.content.includes('amazonaws.com'));
+        } catch (error) {
+            console.error('Error checking CSP:', error);
+        }
 
-        console.log('=== Nonce Verification ===');
-        const scripts = document.querySelectorAll('script[nonce]');
-        scripts.forEach(script => {
-            console.log('Script nonce:', script.nonce);
-            console.log('Script has correct nonce:', script.nonce === 'gtm123');
-        });
+        // Verify Nonce Implementation
+        try {
+            console.log('=== Nonce Verification ===');
+            const scripts = document.querySelectorAll('script[nonce]');
+            scripts.forEach((script, index) => {
+                console.log(`Script ${index + 1} nonce:`, script.nonce);
+                console.log(`Script ${index + 1} has correct nonce:`, script.nonce === 'gtm123');
+            });
+        } catch (error) {
+            console.error('Error verifying nonces:', error);
+        }
 
-        console.log('=== eval() Permission Check ===');
+        // Test eval() and Alternatives
+        console.log('=== Security Features Verification ===');
         
-        // Test 1: Check if eval() is blocked
+        // Test 1: eval() blocking
         try {
             eval('console.log("Testing eval()")');
-            console.log('eval() is allowed - CSP might not be properly configured');
+            console.warn('⚠️ eval() is allowed - CSP might not be properly configured');
         } catch (e) {
-            console.log('eval() is blocked by CSP - This is the expected behavior');
+            console.log('✅ eval() is blocked by CSP - This is the expected behavior');
             console.log('Error details:', e.message);
         }
         
-        // Test 2: Check Function constructor
+        // Test 2: Function constructor blocking
         try {
             new Function('console.log("Testing Function constructor")')();
-            console.log('Function constructor is allowed');
+            console.warn('⚠️ Function constructor is allowed - Check CSP configuration');
         } catch (e) {
-            console.log('Function constructor is blocked by CSP');
+            console.log('✅ Function constructor is blocked by CSP');
         }
         
-        // Test 3: Check setTimeout with string
+        // Test 3: Custom variables functionality
         try {
-            setTimeout('console.log("Testing setTimeout with string")', 100);
-            console.log('setTimeout with string is allowed');
-        } catch (e) {
-            console.log('setTimeout with string is blocked by CSP');
+            console.log('=== Custom Variables Verification ===');
+            console.log('Timestamp format valid:', /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(window.customVariables.timestamp));
+            console.log('First level path extracted:', window.customVariables.firstLevelPath);
+        } catch (error) {
+            console.error('Error testing custom variables:', error);
+        }
+
+        // Test 4: DataLayer verification
+        try {
+            console.log('=== DataLayer Verification ===');
+            console.log('DataLayer exists:', typeof dataLayer !== 'undefined');
+            console.log('Custom variables in DataLayer:', dataLayer.some(item => item.customTimestamp && item.customFirstLevelPath));
+        } catch (error) {
+            console.error('Error verifying DataLayer:', error);
         }
     </script>
 
