@@ -5,26 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:locale" content="ja_JP">
     
-     <!-- CSP Meta Tag -->
-<meta http-equiv="Content-Security-Policy" content="
-    default-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://bichvt.github.io https://likecms.s3-ap-northeast-1.amazonaws.com;
-    script-src 'self' 'nonce-gtm123' https://*.googletagmanager.com https://tagmanager.google.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://googletagmanager.com;
-    img-src 'self' https://*.amazonaws.com https://*.google-analytics.com https://*.googleusercontent.com www.googletagmanager.com https://googletagmanager.com https://ssl.gstatic.com https://www.gstatic.com data:;
-    font-src 'self' data: https://fonts.gstatic.com https://fonts.gstatic.com data:;
-    connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
-    
-">
-    
-    <!-- GTM Script -->
-    <script nonce="gtm123">
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'startTime':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-M882RMPT');
-    </script>
+    <!-- CSP Meta Tag - Comprehensive security configuration -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.amazonaws.com;
+        script-src 'self' 'unsafe-inline' 'nonce-gtm123' https://*.googletagmanager.com https://www.googletagmanager.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        img-src 'self' https://*.amazonaws.com https://*.google-analytics.com https://*.googleusercontent.com https://*.googletagmanager.com https://www.googletagmanager.com data:;
+        font-src 'self' data: https://fonts.gstatic.com;
+        connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.googletagmanager.com;
+    ">
 
+    <!-- GTM Script with nonce -->
+<!-- Google Tag Manager -->
+<script nonce="gtm123">
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M882RMPT');
+
+// Add event handlers
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle GA click events
+    document.querySelectorAll('.gaClickEvent').forEach(function(element) {
+        element.addEventListener('click', function(e) {
+            const category = this.getAttribute('data-gaevent-category');
+            const action = this.getAttribute('data-gaevent-action');
+            const label = this.getAttribute('data-gaevent-label');
+            const value = this.getAttribute('data-gaevent-value');
+            
+            // Push to dataLayer
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'gaEvent',
+                'eventCategory': category,
+                'eventAction': action,
+                'eventLabel': label,
+                'eventValue': value
+            });
+        });
+    });
+});
+</script>
+<!-- End Google Tag Manager -->								
     <!-- Styles -->
     <link rel="stylesheet" href="./bootstrap.min.css"/>
     <link rel="stylesheet" href='https://fonts.googleapis.com/icon?family=Material+Icons'/>
