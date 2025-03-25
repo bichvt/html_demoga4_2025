@@ -5,25 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:locale" content="ja_JP">
     
+    <!-- CSP Meta Tag - Comprehensive security configuration -->
     <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.amazonaws.com;
-        script-src 'self' 'nonce-gtm123' https://*.googletagmanager.com https://www.googletagmanager.com;
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        img-src 'self' https://*.amazonaws.com https://*.google-analytics.com https://*.googleusercontent.com https://*.googletagmanager.com https://www.googletagmanager.com data:;
-        font-src 'self' data: https://fonts.gstatic.com;
-        connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.googletagmanager.com;
+        script-src 'self' 'nonce-gtm123';
+        script-src https://*.googletagmanager.com
+        img-src www.googletagmanager.com https://*.google-analytics.com https://*.googletagmanager.com;
+        connect-src www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com
     ">
-
-    <!-- GTM Script with nonce -->
 <!-- Google Tag Manager -->
-<script nonce="gtm123">
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M882RMPT');
-</script>
-<!-- End Google Tag Manager -->								
+<script nonce= 'gtm123'>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');
+    n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M882RMPT');</script>
+    <!-- End Google Tag Manager -->
+
     <!-- Styles -->
     <link rel="stylesheet" href="./bootstrap.min.css"/>
     <link rel="stylesheet" href='https://fonts.googleapis.com/icon?family=Material+Icons'/>
