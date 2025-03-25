@@ -23,29 +23,6 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M882RMPT');
-
-// Add event handlers
-document.addEventListener('DOMContentLoaded', function() {
-    // Handle GA click events
-    document.querySelectorAll('.gaClickEvent').forEach(function(element) {
-        element.addEventListener('click', function(e) {
-            const category = this.getAttribute('data-gaevent-category');
-            const action = this.getAttribute('data-gaevent-action');
-            const label = this.getAttribute('data-gaevent-label');
-            const value = this.getAttribute('data-gaevent-value');
-            
-            // Push to dataLayer
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'gaEvent',
-                'eventCategory': category,
-                'eventAction': action,
-                'eventLabel': label,
-                'eventValue': value
-            });
-        });
-    });
-});
 </script>
 <!-- End Google Tag Manager -->								
     <!-- Styles -->
