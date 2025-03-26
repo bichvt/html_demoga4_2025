@@ -9,25 +9,11 @@
 <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'nonce-gtm123' https://*.googletagmanager.com https://tagmanager.google.com https://*.google-analytics.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://tagmanager.google.com;
     img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://ssl.gstatic.com https://www.gstatic.com data: https://likecms.s3-ap-northeast-1.amazonaws.com;
     font-src 'self' https://fonts.gstatic.com data:;
     connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://pfc-osaka.jp;
     frame-src https://www.googletagmanager.com;
 ">
-<!-- Fix blocklist error -->
-    <script>
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-    'gtm': {
-        'allowlist': ['googletagmanager.com', 'google-analytics.com'],
-        'blocklist': [],
-        'whitelist': ['googletagmanager.com', 'google-analytics.com'],
-        'blacklist': []
-    }
-});
-</script>
-
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){...})(window,document,'script','dataLayer','GTM-XXXXX');</script>
     
