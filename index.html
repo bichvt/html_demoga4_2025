@@ -1,11 +1,15 @@
 <!DOCTYPE html>
+      <html>
+        
+            <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+      
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:locale" content="ja_JP">
-    
-    <!-- CSP Meta Tag - whitelist setting following Google's official guidelines -->
+    <!-- CSP Meta Tag -->
 <meta http-equiv="Content-Security-Policy" content="
     default-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://bichvt.github.io https://likecms.s3-ap-northeast-1.amazonaws.com;
     script-src 'self' 'nonce-gtm123' https://*.googletagmanager.com;
@@ -14,27 +18,157 @@
     font-src 'self' data: https://fonts.gstatic.com;
     connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
 ">
-    <!-- Google Tag Manager with nonce -->
-    <script nonce="gtm123">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');
-    n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-M882RMPT');</script>
-    <!-- End Google Tag Manager -->
+    
+    <!-- GTM Script -->
+    <script nonce="gtm123">
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'startTime':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-M882RMPT');
+    </script>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="./bootstrap.min.css"/>
-    <link rel="stylesheet" href='https://fonts.googleapis.com/icon?family=Material+Icons'/>
+    <!-- Custom JavaScript Variables -->
+    <script nonce="gtm123">
+        // Timestamp variable - CSP compliant version
+        function getFormattedTimestamp() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        // First level path variable - CSP compliant version
+        function getFirstLevelPath() {
+            const path = window.location.pathname;
+            const segments = path.split('/').filter(segment => segment);
+            return segments[0] || '';
+        }
+
+        // Store variables in window object for GTM access
+        window.customVariables = {
+            timestamp: getFormattedTimestamp(),
+            firstLevelPath: getFirstLevelPath()
+        };
+    </script>
+
+    <!-- DataLayer Initialization -->
+    <script nonce="gtm123">
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+            'customTimestamp': window.customVariables.timestamp,
+            'customFirstLevelPath': window.customVariables.firstLevelPath,
+            'pageType': 'landing_page',
+            'pageCategory': 'food',
+            'pageName': 'PFC Meat Products'
+        });
+    </script>
+
+    <!-- Test Script for CSP and GTM Verification -->
+    <script nonce="gtm123">
+        console.log('=== CSP and GTM Verification ===');
+        
+        // Check CSP
+        const cspMeta = document.querySelector('meta[http-equiv="Content-Security-Policy"]');
+        console.log('CSP exists:', !!cspMeta);
+        if (cspMeta) {
+            console.log('CSP Content:', cspMeta.content);
+        }
+        
+        // Check GTM
+        console.log('GTM loaded:', typeof window.dataLayer !== 'undefined');
+        if (window.dataLayer) {
+            console.log('DataLayer content:', window.dataLayer);
+        }
+        
+        // Check Custom Variables
+        console.log('Custom variables:', window.customVariables);
+    </script>
+
+    <!-- Error Handling for Custom Variables -->
+    <script nonce="gtm123">
+        try {
+            window.customVariables = {
+                timestamp: getFormattedTimestamp(),
+                firstLevelPath: getFirstLevelPath()
+            };
+            console.log('Custom variables created successfully');
+        } catch (e) {
+            console.error('Error creating custom variables:', e);
+        }
+    </script>
 
     <title>大阪の焼肉店約1/3のシェア！</title>
-</head>
-<body id="article" style="max-width: 880px; background: none; margin: 0 auto">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M882RMPT" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
+	
+<!-- Test Scripts -->
+<script nonce="gtm123">
+    // Test 1: Kiểm tra CSP
+    console.log('=== CSP Test Results ===');
+    console.log('1. Basic script execution:', 'Success');
+    
+    // Test 2: Kiểm tra GTM
+    console.log('2. GTM Status:', {
+        'dataLayer exists': typeof window.dataLayer !== 'undefined',
+        'dataLayer content': window.dataLayer || 'Not initialized'
+    });
+    
+    // Improved GTM Events Check
+    if (window.dataLayer) {
+        const gtmEvents = window.dataLayer.filter(item => item.event);
+        console.log('GTM Events:', gtmEvents.map(e => e.event));
+    }
+    
+    // Test 3: Kiểm tra Custom Variables
+    console.log('3. Custom Variables:', {
+        'customVariables exists': typeof window.customVariables !== 'undefined',
+        'timestamp': window.customVariables?.timestamp || 'Not available',
+        'firstLevelPath': window.customVariables?.firstLevelPath || 'Not available'
+    });
+    
+    // Test 4: Kiểm tra Resource Loading với Error Handling chi tiết
+    console.log('4. Resource Loading Test:');
+    const testImage = new Image();
+    testImage.onload = () => console.log('- Image loading: Success');
+    testImage.onerror = (error) => {
+        console.log('- Image loading: Failed', {
+            'Error message': error.message || 'No error message available',
+            'Image source': testImage.src,
+            'Time': new Date().toISOString()
+        });
+    };
+    testImage.src = 'https://likecms.s3-ap-northeast-1.amazonaws.com/test.jpg';
+    
+    // Test 5: Kiểm tra CSP Violations
+    console.log('5. CSP Violation Test:');
+    try {
+        eval('console.log("eval test")');
+        console.log('- eval() execution: Success (CSP might not be working)');
+    } catch (e) {
+        console.log('- eval() execution: Blocked (CSP is working)');
+    }
+</script>
+</head>		
+
+        <meta property="og:locale" content="ja_JP">
+        
+
+              
+          <link rel="stylesheet" href="./bootstrap.min.css"/>
+          <link rel="stylesheet" href='https://fonts.googleapis.com/icon?family=Material+Icons'/>
+          <meta name='viewport' content='width=device-width, initial-scale=1'>       
+            </head>
+        <body>
+          
+<body id="article"  style="max-width: 880px; background: none; margin: 0 auto" class= "false">
+ <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M882RMPT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
           <div class="header">
             
         <div id="articleTopImageContainerWrapper">
@@ -62,6 +196,7 @@
 <p style="clear: both;">&nbsp;</p>
 <p style="clear: both;"><span style="font-weight: bold;">焼肉店で出されている高級なお肉</span>を、<span style="font-weight: bold; font-size: 15pt; color: #ff0000; background: linear-gradient(transparent 60%, #ffff99 40%);">自宅でも食べられる方法がある</span>ってことに！</p>
 <p style="clear: both;">&nbsp;</p>
+<p style="clear: both;"><img style="display: block; margin: auto; float: none;" src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F5712ced9-9822-4312-bf43-e8d962ac634c6481028363239467566.jpg" alt="" width="800" height="500"></p>
 <p style="clear: both; text-align: right;"><span style="font-size: 8pt; color: #999999;">※画像はイメージです</span></p>
 <p style="clear: both;">&nbsp;</p>
 <p style="clear: both;">おかげで外に焼き肉を食べに行くことも減り、自宅で焼肉三昧です♪</p>
@@ -81,6 +216,7 @@
 <p style="clear: both;">&nbsp;</p>
 <p style="clear: both;">P.F.Cは大阪府にある食肉の卸売業者です。<br>なんと、<span style="font-weight: bold; background: linear-gradient(transparent 60%, #ffff99 40%);">大阪府内のおよそ<span style="font-size: 14pt; color: #ff0000;">1/3の焼肉店</span>にお肉を卸しているんだそう！</span></p>
 <p style="clear: both;">&nbsp;</p>
+<p style="clear: both;"><img style="display: block; margin: auto; float: none;" src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F498122cc-7b5e-4564-8d5e-942c5334ca354492962001006107164.jpg" alt="" width="800" height="500"></p>
 <p style="clear: both;">&nbsp;</p>
 <p style="clear: both;">国産黒毛和牛から輸入牛、A5等級のお肉を中心に</p>
 <p style="clear: both;">それ以上の「<span style="font-size: 14pt; font-weight: bold; color: #ff0000; background: linear-gradient(transparent 60%, #ffff99 40%);">特選</span>」や「<span style="font-weight: bold; font-size: 14pt; background: linear-gradient(transparent 60%, #ffff99 40%); color: #ff0000;">希少部位</span>」も幅広く取り揃えています！</p>
@@ -138,10 +274,10 @@
 <p style="clear: both;">&nbsp;</p>
 <div id="content_body-swipe-59a81728-0ff2-4508-8797-ed4321e4545a" class="swiper-container carousel-image-border image-swipe">
 <div class="swiper-wrapper">
-<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F498122cc-7b5e-4564-8d5e-942c5334ca353176896024966327878.png" alt="images_498122cc-7b5e-4564-8d5e-942c5334ca3525485551978505792.jpg" width="800" height="600"></div>
-<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F5712ced9-9822-4312-bf43-e8d962ac634c611629874426655913.png" alt="images_498122cc-7b5e-4564-8d5e-942c5334ca358278370118270088830.png" width="800" height="600"></div>
-<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F498122cc-7b5e-4564-8d5e-942c5334ca352369301437904736051.png" alt="images_5712ced9-9822-4312-bf43-e8d962ac634c260477899031478913.png" width="800" height="600"></div>
-<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F5712ced9-9822-4312-bf43-e8d962ac634c3204836585441727926.png" alt="images_5712ced9-9822-4312-bf43-e8d962ac634c3866411195461736715.png" width="800" height="600"></div>
+<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F498122cc-7b5e-4564-8d5e-942c5334ca353176896024966327878.png" alt="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F498122cc-7b5e-4564-8d5e-942c5334ca3525485551978505792.jpg" width="800" height="600"></div>
+<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F5712ced9-9822-4312-bf43-e8d962ac634c611629874426655913.png" alt="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F498122cc-7b5e-4564-8d5e-942c5334ca358278370118270088830.png" width="800" height="600"></div>
+<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F498122cc-7b5e-4564-8d5e-942c5334ca352369301437904736051.png" alt="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F5712ced9-9822-4312-bf43-e8d962ac634c260477899031478913.png" width="800" height="600"></div>
+<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F5712ced9-9822-4312-bf43-e8d962ac634c3204836585441727926.png" alt="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F5712ced9-9822-4312-bf43-e8d962ac634c3866411195461736715.png" width="800" height="600"></div>
 </div>
 <div class="swiper-pagination">&nbsp;</div>
 <div class="swiper-button-prev swiper-button-black">&nbsp;</div>
@@ -226,11 +362,11 @@
 <div class="initCheckBox squareBox blockBox likecmsColorPicker" style="background-color: #d4e1e3; border-color: #000000; border-width: 1px;">
 <div id="content_body-swipe-d9000a45-b91d-4e3f-8962-87ddf61807fa" class="swiper-container carousel-image-border image-swipe">
 <div class="swiper-wrapper">
-<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F85348d60-07c0-455b-84eb-e768299347b33690748458612756137.jpg" alt="images_148eb499-f10e-49dc-88f7-64d75564e9788845380742860714340.png" width="800" height="1300"></div>
-<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2Fca4608ce-f945-4780-8009-036ccf6aab747091714629211298845.jpg" alt="images_dcab0913-aad1-46fc-8fce-d7ebcba6ddd81853275302430590906.png" width="800" height="1300"></div>
-<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F85348d60-07c0-455b-84eb-e768299347b31288676594542306176.jpg" alt="images_148eb499-f10e-49dc-88f7-64d75564e97899585513582398542.png" width="800" height="1300"></div>
-<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2Fca4608ce-f945-4780-8009-036ccf6aab741061124405945315342.jpg" alt="images_dcab0913-aad1-46fc-8fce-d7ebcba6ddd8803214164851818406.png" width="800" height="1300"></div>
-<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F85348d60-07c0-455b-84eb-e768299347b3346017337070070697.jpg" alt="images_148eb499-f10e-49dc-88f7-64d75564e9787527470340196645965.png" width="800" height="1300"></div>
+<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F85348d60-07c0-455b-84eb-e768299347b33690748458612756137.jpg" alt="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F148eb499-f10e-49dc-88f7-64d75564e9788845380742860714340.png" width="800" height="1300"></div>
+<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2Fca4608ce-f945-4780-8009-036ccf6aab747091714629211298845.jpg" alt="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2Fdcab0913-aad1-46fc-8fce-d7ebcba6ddd81853275302430590906.png" width="800" height="1300"></div>
+<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F85348d60-07c0-455b-84eb-e768299347b31288676594542306176.jpg" alt="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F148eb499-f10e-49dc-88f7-64d75564e97899585513582398542.png" width="800" height="1300"></div>
+<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2Fca4608ce-f945-4780-8009-036ccf6aab741061124405945315342.jpg" alt="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2Fdcab0913-aad1-46fc-8fce-d7ebcba6ddd8803214164851818406.png" width="800" height="1300"></div>
+<div class="swiper-slide"><img src="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F85348d60-07c0-455b-84eb-e768299347b3346017337070070697.jpg" alt="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F148eb499-f10e-49dc-88f7-64d75564e9787527470340196645965.png" width="800" height="1300"></div>
 </div>
 <div class="swiper-pagination">&nbsp;</div>
 <div class="swiper-button-prev swiper-button-black">&nbsp;</div>
@@ -266,15 +402,19 @@
             
             <div class="clear"></div>
             <footer>
+              <p id="link_about_me"><a href="https://likev2.sep-tech.net/pfcm/aboutme/fb_4_br" target="_blank"> 運営会社</a></p>
               <p id="copy_right">Copyright © LIKE! NEWS All Rights Reserved.</p>
               
-        <input type="hidden" name="gaTrackingId" id="gaTrackingId" value = ""/>
+        <input type="hidden" name="gaTrackingId" id="gaTrackingId" value = ",G-T4LBTYN9NV"/>
         <input type="hidden" name="adplanFlag" id="adplanFlag" value=0/>
         <input type="hidden" name="isTopImage" id="isTopImage" value="1"/>
         <input type="hidden" name="fixed_top_image" id="fixed_top_image" value="0"/>
-        <input type="hidden" name="top_image" id="top_image" value="images_85348d60-07c0-455b-84eb-e768299347b34396909391325228298.jpg"/>
+        <input type="hidden" name="top_image" id="top_image" value="https://likecms.s3-ap-northeast-1.amazonaws.com/images%2F85348d60-07c0-455b-84eb-e768299347b34396909391325228298.jpg"/>
         <input type="hidden" name="urlTag" id="urlTag" value=""/>
+        <input type="hidden" name="fullBaseUrl" id="fullBaseUrl" value="https://likev2.sep-tech.net/pfcm/fb_4_br"/>
         <input type="hidden" name="fullBasgaEventLabeleUrl" id="fullBasgaEventLabeleUrl" value=""/>
+          </div>
           
+        </body>
         </body>
       </html>
