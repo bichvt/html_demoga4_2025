@@ -7,12 +7,12 @@
     
     <!-- CSP Meta Tag - whitelist setting following Google's official guidelines -->
 <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
-    script-src 'self' 'nonce-gtm123' https://*.googletagmanager.com https://tagmanager.google.com https://*.google-analytics.com;
-    img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://ssl.gstatic.com https://www.gstatic.com data: https://likecms.s3-ap-northeast-1.amazonaws.com;
-    font-src 'self' https://fonts.gstatic.com data:;
-    connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://pfc-osaka.jp;
-    frame-src https://www.googletagmanager.com;
+    default-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://bichvt.github.io https://likecms.s3-ap-northeast-1.amazonaws.com;
+    script-src 'self' 'nonce-gtm123' https://*.googletagmanager.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    img-src 'self' https://*.amazonaws.com https://*.google-analytics.com https://*.googleusercontent.com data:;
+    font-src 'self' data: https://fonts.gstatic.com;
+    connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
 ">
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){...})(window,document,'script','dataLayer','GTM-XXXXX');</script>
