@@ -25,25 +25,6 @@
     })(window,document,'script','dataLayer','GTM-WSQ5TRK3');</script>
     <!-- End Google Tag Manager -->
 
-    <!-- GA4 Event Handling with nonce -->
-    <script nonce="gtm123">
-    document.addEventListener('DOMContentLoaded', function() {
-        // Handle GA click events
-        document.querySelectorAll('[data-ga-event]').forEach(function(element) {
-            element.addEventListener('click', function() {
-                const eventData = JSON.parse(this.getAttribute('data-ga-event'));
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({
-                    'event': eventData.event,
-                    'eventCategory': eventData.category,
-                    'eventAction': eventData.action,
-                    'eventLabel': eventData.label
-                });
-            });
-        });
-    });
-    </script>
-
     <!-- Styles -->
     <link rel="stylesheet" href="./bootstrap.min.css"/>
     <link rel="stylesheet" href='https://fonts.googleapis.com/icon?family=Material+Icons'/>
